@@ -1,4 +1,5 @@
 import './App.css';
+import Details from './Components/Details';
 import Filter from './Components/Filter';
 import SearchResult from './Components/SearchResult';
 import { ThumbsUp, ThumbsDown} from "lucide-react";
@@ -59,6 +60,7 @@ function App() {
           </div>
         </div>
       </div>
+      <Details/>
       
     </>
   );
