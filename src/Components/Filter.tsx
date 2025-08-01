@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent,type FormEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { Search, ChevronDown, ArrowLeft, CalendarDays } from "lucide-react";
 
 type FormData = {
@@ -39,58 +39,70 @@ const Filter = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="border border-aegold-500 bg-white rounded-md p-6 flex flex-col gap-5 w-64"
+      className="border border-aegold-500 bg-white rounded-md p-6 flex flex-col gap-5 w-64 "
     >
       <h2 className="text-[20px] text-[#232528] font-bold text-right font-semibold">
         الفلتر
       </h2>
+      <div className="aegov-form-control mb-4" dir="rtl">
+        <div className="form-control-input">
+          <span className="control-prefix">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+              <rect width="256" height="256" fill="none" />
+              <circle
+                cx="112"
+                cy="112"
+                r="80"
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="16"
+              />
+              <line
+                x1="168.57"
+                y1="168.57"
+                x2="224"
+                y2="224"
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="16"
+              />
+            </svg>
+          </span>
+          <input
+            type="search"
+            name="search_prefix"
+            id="search_prefix"
+            placeholder="البحث"
+          />
 
-      <div
-        className="flex items-center gap-0 border border-aegold-500 rounded-md px-1 py-0"
-        dir="rtl"
-      >
-        <Search className="w-5 h-5 text-[#9EA2A9] mr-2" />
-        <input
-          type="text"
-          placeholder="ابحث"
-          value={formData.search}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            handleChange("search", e.target.value)
-          }
-          className="flex-1 bg-transparent border-none focus:outline-none text-[#5D3B26] placeholder-[#5D3B26] text-right mr--2"
-        />
-      </div>
-
-      <div dir="rtl">
-        <label className="block text-[20px] text-[#232528] mb-2 text-right font-semibold">
-          التصنيف
-        </label>
-        <div className="relative">
-          <select
-            value={formData.category}
-            onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-              handleChange("category", e.target.value)
-            }
-            className="w-full border border-aegold-500 rounded-md py-2 pl-8 pr-3 appearance-none bg-transparent focus:outline-none text-[#5D3B26]"
-          >
-            <option value="">اختر</option>
-            <option value="option1">خيار 1</option>
-            <option value="option2">خيار 2</option>
-          </select>
-          <ChevronDown className="absolute top-1/2 left-2 -translate-y-1/2 text-[#92722A] pointer-events-none" />
         </div>
-
       </div>
+
+
+
+      <div className="aegov-form-control" dir="rtl">
+        <h4 className="text-[17px] text-[#232528] font-bold text-right font-semibold">تصنيف</h4>
+
+        <div className="form-control-input">
+          <select id="referenceId" name="nameRelatedSelect" autoComplete="select-name">
+            <option>اختيار 1</option>
+            <option>اختيار 2</option>
+            <option>اختيار 3</option>
+          </select>
+        </div>
+      </div>
+
 
       <div>
         <label className="block text-[20px] text-[#232528] mb-2 text-right font-semibold">
           التاريخ
         </label>
-        <div className="flex flex-col gap-3">
-          <div
-            className="flex items-center gap-2 border border-aegold-500 rounded-[8px] px-1"
-            dir="rtl"
-          >
+        <div className="flex flex-col gap-3" dir="rtl">
+          <div className="flex items-center gap-2 border border-aegold-500 rounded-[8px] px-1">
             <input
               type="text"
               placeholder="من"
@@ -102,10 +114,8 @@ const Filter = () => {
             />
             <CalendarDays className="w-5 h-5 text-[#232528]" />
           </div>
-          <div
-            className="flex items-center gap-2 border border-aegold-500 rounded-[8px] px-1"
-            dir="rtl"
-          >
+
+          <div className="flex items-center gap-2 border border-aegold-500 rounded-[8px] px-1">
             <input
               type="text"
               placeholder="إلى"
@@ -120,6 +130,7 @@ const Filter = () => {
         </div>
       </div>
 
+
       <div>
         <label
           dir="rtl"
@@ -132,28 +143,31 @@ const Filter = () => {
         >
           البحث في:
         </label>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2" dir="rtl">
           {[
-            "عنوان اختيار متعدد",
-            "عنوان اختيار متعدد",
-            "عنوان اختيار متعدد",
-            "عنوان اختيار متعدد",
-            "عنوان اختيار متعدد",
-          ].map((label, i) => (
-            <label
-              key={i}
-              className="flex items-center justify-start gap-4 text-[#232528] text-[16px]"
-              dir="rtl"
-            >
-              <input
-                type="checkbox"
-                checked={formData.checkboxes[i]}
-                onChange={() => handleCheckboxChange(i)}
-                className="w-5 h-5 border border-aegold-500 accent-[#92722A] rounded-sm"
-              />
-              <span>{label}</span>
-            </label>
-          ))}
+            "عنوان اختيار متعدد 1",
+            "عنوان اختيار متعدد 2",
+            "عنوان اختيار متعدد 3",
+            "عنوان اختيار متعدد 4",
+            "عنوان اختيار متعدد 5",
+          ].map((label, i) => {
+            const checkboxId = `checkbox${i + 1}`;
+            return (
+              <div key={i} className="aegov-check-item">
+                <input
+                  id={checkboxId}
+                  type="checkbox"
+                  value={i + 1}
+                  checked={formData.checkboxes[i]}
+                  onChange={() => handleCheckboxChange(i)}
+                  className="accent-[#92722A]"
+                />
+                <label htmlFor={checkboxId} className="text-[#232528] text-[16px]">
+                  {label}
+                </label>
+              </div>
+            );
+          })}
 
           <p
             className="flex gap-1 text-[#92722A] text-sm mt-2 bg-transparent cursor-pointer"
